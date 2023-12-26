@@ -7,6 +7,8 @@ async fn main() {
 
   let args = Args::parse();
 
+  println!("download to: {}", &args.dir);
+
   if args.url.contains("/playlist?") {
     download_playlist(&args.url, &args.dir).await;
   } else {
@@ -80,7 +82,7 @@ struct Args {
     /// Url of a YouTube playlist or video
     #[arg(short, long)]
     url: String,
-    
+
     /// Dir to download to
     #[arg(short, long, default_value = ".")]
     dir: String,
